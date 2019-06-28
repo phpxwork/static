@@ -133,7 +133,8 @@ require(['jquery', 'bootstrap'], function ($, undefined) {
     window.Config = Config;
     // 配置语言包的路径
     var paths = {};
-    paths['lang'] = '?class=ajax&method=lang&callback=define&controllername=' + Config.controllername;
+    var loc = location.href;
+    paths['lang'] = loc.replace(/^\/[^\/]+?$/i,'/')+'?class=ajax&method=lang&callback=define&controllername=' + Config.controllername;
     // 避免目录冲突
     paths['backend/'] = 'backend/';
     require.config({paths: paths});
